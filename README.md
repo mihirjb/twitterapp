@@ -1,4 +1,4 @@
 twitterapp
 ==========
 
-This is a sample twitter app
+This is a sample twitter app by Mihir Buch

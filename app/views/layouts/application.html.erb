@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= @title %></title>
+    <title>Twitter like sample app | <%= @title %></title>
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -10,24 +10,12 @@
     <![endif]-->
   </head>
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="navbar-inner">
-        <div class="container">
-          <%= link_to "sample app", '#', id: "logo" %>
-          <nav>
-            <ul class="nav pull-right">
-              <li><%= link_to "Home",    '#' %></li>
-              <li><%= link_to "Help",    '#' %></li>
-              <li><%= link_to "Sign in", '#' %></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
+   <%= render 'layouts/header' %>
     <div class="container">
 	<div class="content">
       <%= yield %>
 	</div>
     </div>
+	<%= render 'layouts/footer' %>
   </body>
 </html>

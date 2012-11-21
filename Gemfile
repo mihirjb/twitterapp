@@ -21,7 +21,7 @@ group :assets do
 end
 
 group :development do
-  gem 'rspec'
+  gem 'rspec-rails'
   gem 'sqlite3', '1.3.6'
 end
 

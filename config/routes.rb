@@ -57,5 +57,7 @@ Twitterapp::Application.routes.draw do
   # match ':controller(/:action(/:id))(.:format)'
   get "pages/home"
   get "pages/about"
+  get "users/new"
+  get "users/show"
   
 end

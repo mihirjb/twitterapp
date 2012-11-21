@@ -28,6 +28,9 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'spork'
+  gem 'webrat' 
+  gem 'autotest'
+
 end
 
 gem 'jquery-rails'

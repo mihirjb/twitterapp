@@ -1,3 +1,23 @@
 <div class="center hero-unit">
-<h1>This page will show all users.</h1>
+<h1>This page shows all users.</h1>
+
+<table class= "table table-striped table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>User Name</th>
+      <th>Their Email</th>
+    </tr>
+  </thead>
+  <tbody>
+	<%  @user.each do |user|%>
+    <tr>
+      <td> <%= user.name %></td>
+      <td><%= user.email  %></td>
+    </tr>
+<% end
+ %>
+  </tbody>
+</table>
+ 
+
 </div>

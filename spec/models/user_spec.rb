@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   before(:each) do
-    @attr = {:name => "foo",:email => "foo@example.com"}
+    @attr = {:name => "foo", :email => "foo@example.com",:password => "foobar", :password_confirmation => "foobar"}
   end
 
 it "should not have a blank name" do
@@ -33,6 +33,59 @@ it "should have a valid email to be true" do
   invalid_email_user.should_not be_valid
 end
 
-
-
+it "should not be duplicate while inserting email" do
+  dupemail = "foo@example.com"
+  valid_email_user = User.create(@attr)
+  duplicate_email_user = User.create(@attr.merge(:email => dupemail))
+  duplicate_email_user.should_not be_valid
 end
+
+/#
+it "should not be case sensitive while checking for duplicate email" do
+  dupemail = "foo@example.com".upcase
+  valid_email_user = User.create(@attr)
+  duplicate_email_user = User.create(@attr.merge(:email => dupemail))
+  duplicate_email_user.should_not be_valid
+end
+#/
+end
+
+
+describe "Passwords" do
+  
+  it "should respond to password attribute" do
+  User.create(@attr).should respond_to(:password)
+  end
+  
+  it "should respond to password confirmation attribute" do
+  User.create(@attr).should respond_to(:password_confirmation)
+  end
+  
+end
+
+describe "Password Validation" do
+  
+  before(:each) do
+      @attr = {:name => "foo", :email => "foo@example.com",:password => "foobar", :password_confirmation => "foobar"}
+  end
+
+    it "should have a password with minimum length of 6 characters" do
+      invalid_password_less = "a"*5
+      user_shortpwd = User.create(@attr.merge(:password => invalid_password_less))
+      user_shortpwd.should_not be_valid
+    end
+
+    it "should have a password with maximum length of 40 characters" do
+      invalid_password_more = "a"*41
+      user_longpwd = User.create(@attr.merge(:password => invalid_password_more))
+      user_longpwd.should_not be_valid
+    end
+   
+   it "should have matching passwords" do
+     invalid_password_confirmation = "invalid"
+     user_invalid_confirmation = User.create(@attr.merge(:password => invalid_password_confirmation))
+     user_invalid_confirmation.should_not be_valid
+    end
+end
+
+

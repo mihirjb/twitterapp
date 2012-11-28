@@ -5,7 +5,9 @@ class UsersController < ApplicationController
   end
   
   def show
+      
     @title = "Showing all users"
+    @user = User.all
    end
   
 end
